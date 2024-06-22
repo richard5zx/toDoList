@@ -10,8 +10,8 @@ public interface UserDao {
 	
 	// READ
 	List<User> queryAll();
-	User queryUser(String username, String password);
-	boolean queryUsername(String username);
+	List<User> queryUser(String username, String password);
+	List<User> queryUsername(String username);
 	User queryById(int userid);
 	
 	// UPDATE

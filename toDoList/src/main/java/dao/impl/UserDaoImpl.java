@@ -7,6 +7,7 @@ import dao.UserDao;
 import entity.User;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
+import jakarta.persistence.Query;
 
 public class UserDaoImpl implements UserDao {
 	
@@ -14,29 +15,40 @@ public class UserDaoImpl implements UserDao {
 		
 		// ------- Tests -------
 		// addUser Test
-		// User user = new User("Bob", "Myers", "bob123", "bobpass");
-		// new UserDaoImpl().addUser(user);
+		User user = new User("Bill", "Gobs", "bill123", "billpass");
+		new UserDaoImpl().addUser(user);
 		
 		// queryAll Test
+        // List<User> userList = new UserDaoImpl().queryAll();
+        // for(User user : userList) {
+        //     System.out.println(user.getFirstname() + " " + user.getLastname());
+        // }
 		
 		// queryUser Test
+//				List<User> userList = new UserDaoImpl().queryUser("Bob123", "bobpass");
+//		        for(User user1 : userList) {
+//		            System.out.println(user1.getFirstname() + " " + user1.getLastname());
+//		        }
 		
 		// queryUsername Test
+//		List<User> userList2 = new UserDaoImpl().queryUsername("bill123");
+//        for(User user2 : userList2) {
+//            System.out.println(user2.getFirstname() + " " + user2.getLastname());
+//        }
 		
 		// queryById Test
 		// User user = new UserDaoImpl().queryById(1);
 		//stem.out.println(user.getFirstname());
 		
 		// updateUser Test
-		// Why doesn't the below work
-		// User user = new User("Bob", "Myers", "bob123", "bobpass");
+		
+		// User user = new UserDaoImpl().queryById(1);
 		// user.setFirstname("Boban");
 		// new UserDaoImpl().updateUser(user);
-		User user = new UserDaoImpl().queryById(1);
-		user.setFirstname("Boban");
-		new UserDaoImpl().updateUser(user);
 		
 		// deleteUser
+		// User user = new UserDaoImpl().queryById(1);
+		// new UserDaoImpl().deleteUser(user);
 	}
 	
 	private static final EntityManager em = DbConnection.getDb();
@@ -47,25 +59,33 @@ public class UserDaoImpl implements UserDao {
 		et.begin();
 		em.persist(user);
 		et.commit();
-		
 	}
 
 	@Override
 	public List<User> queryAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String SQL = "SELECT * FROM users";
+		Query q = em.createNativeQuery(SQL, User.class);
+		
+		return q.getResultList();
 	}
 
 	@Override
-	public User queryUser(String username, String password) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<User> queryUser(String username, String password) {
+		String SQL = "SELECT * FROM users WHERE username=?1 and password=?2";
+		Query q = em.createNativeQuery(SQL, User.class);
+		q.setParameter(1, username);
+		q.setParameter(2, password);
+		
+		return q.getResultList();
 	}
 
 	@Override
-	public boolean queryUsername(String username) {
-		// TODO Auto-generated method stub
-		return false;
+	public List<User> queryUsername(String username) {
+		String SQL = "SELECT * FROM users WHERE username=?1";
+		Query q = em.createNativeQuery(SQL, User.class);
+		q.setParameter(1, username);
+		
+		return q.getResultList();
 	}
 
 	@Override
@@ -84,8 +104,10 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public void deleteUser(User user) {
-		// TODO Auto-generated method stub
-		
+		EntityTransaction et = em.getTransaction();
+		et.begin();
+		em.remove(user);
+		et.commit();
 	}
 
 }
