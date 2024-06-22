@@ -1,7 +1,7 @@
 # TO Do List
 ## Description
-Having created a simple login system using struts and jpa in my bootcamp class, I decided to to extend this project in to a To Do List for my learning.
-JPA -> persistence.xml
+Having created a simple login system using struts and jpa in my bootcamp class, I decided to to extend this project in to a To Do List for my learning. <br />
+JPA -> persistence.xml <br />
 Struts -> web.xml, struts.xml
 
 ## Motivation
