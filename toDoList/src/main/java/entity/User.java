@@ -1,10 +1,21 @@
 package entity;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="users")
 public class User {
+	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer userid;
 	private String firstname;
 	private String lastname;
-	private String usernamne;
+	private String username;
 	private String password;
 	
 	
@@ -16,7 +27,7 @@ public class User {
 		super();
 		this.firstname = firstname;
 		this.lastname = lastname;
-		this.usernamne = usernamne;
+		this.username = usernamne;
 		this.password = password;
 	}
 	
@@ -39,10 +50,10 @@ public class User {
 		this.lastname = lastname;
 	}
 	public String getUsernamne() {
-		return usernamne;
+		return username;
 	}
 	public void setUsernamne(String usernamne) {
-		this.usernamne = usernamne;
+		this.username = usernamne;
 	}
 	public String getPassword() {
 		return password;
