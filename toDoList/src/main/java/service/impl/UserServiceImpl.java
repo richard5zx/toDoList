@@ -1,5 +1,7 @@
 package service.impl;
 
+import java.util.List;
+
 import dao.impl.UserDaoImpl;
 import entity.User;
 import service.UserService;
@@ -8,13 +10,20 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void registerUser(User user) {
-		new UserDaoImpl().addUser(user);
+		if(authenticateUser(user.getUsernamne(), user.getPassword())) {
+			new UserDaoImpl().addUser(user);
+		}
 	}
 
 	@Override
-	public boolean checkUsername(String username) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean checkIfUsernameExist(String username) {
+		List<User> list = new UserDaoImpl().queryUsername(username);
+		
+		if (list.size() > 0) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@Override

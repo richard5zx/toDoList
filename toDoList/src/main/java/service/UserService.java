@@ -1,7 +1,5 @@
 package service;
 
-import java.util.List;
-
 import entity.User;
 
 public interface UserService {
@@ -9,7 +7,7 @@ public interface UserService {
 	void registerUser(User user);
 	
 	// READ
-	boolean checkUsername(String username);
+	boolean checkIfUsernameExist(String username);
 	boolean authenticateUser(String username, String password);
 	
 	// UPDATE
