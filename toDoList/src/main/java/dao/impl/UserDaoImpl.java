@@ -15,20 +15,20 @@ public class UserDaoImpl implements UserDao {
 		
 		// ------- Tests -------
 		// addUser Test
-		User user = new User("Bill", "Gobs", "bill123", "billpass");
-		new UserDaoImpl().addUser(user);
+//		User user = new User("Bill", "Gobs", "bill123", "billpass");
+//		new UserDaoImpl().addUser(user);
 		
 		// queryAll Test
-        // List<User> userList = new UserDaoImpl().queryAll();
-        // for(User user : userList) {
-        //     System.out.println(user.getFirstname() + " " + user.getLastname());
-        // }
+//        List<User> userList = new UserDaoImpl().queryAll();
+//        for(User user : userList) {
+//        	System.out.println(user.getFirstname() + " " + user.getLastname());
+//        }
 		
 		// queryUser Test
-//				List<User> userList = new UserDaoImpl().queryUser("Bob123", "bobpass");
-//		        for(User user1 : userList) {
-//		            System.out.println(user1.getFirstname() + " " + user1.getLastname());
-//		        }
+//		List<User> userList = new UserDaoImpl().queryUser("Bob123", "bobpass");
+//		for(User user1 : userList) {
+//			System.out.println(user1.getFirstname() + " " + user1.getLastname());
+//		}
 		
 		// queryUsername Test
 //		List<User> userList2 = new UserDaoImpl().queryUsername("bill123");
@@ -37,18 +37,17 @@ public class UserDaoImpl implements UserDao {
 //        }
 		
 		// queryById Test
-		// User user = new UserDaoImpl().queryById(1);
-		//stem.out.println(user.getFirstname());
+//		User user = new UserDaoImpl().queryById(1);
+//		System.out.println(user.getFirstname());
 		
 		// updateUser Test
-		
-		// User user = new UserDaoImpl().queryById(1);
-		// user.setFirstname("Boban");
-		// new UserDaoImpl().updateUser(user);
+//		User user = new UserDaoImpl().queryById(1);
+//		user.setFirstname("Boban");
+//		new UserDaoImpl().updateUser(user);
 		
 		// deleteUser
-		// User user = new UserDaoImpl().queryById(1);
-		// new UserDaoImpl().deleteUser(user);
+//		User user = new UserDaoImpl().queryById(1);
+//		new UserDaoImpl().deleteUser(user);
 	}
 	
 	private static final EntityManager em = DbConnection.getDb();
